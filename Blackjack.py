@@ -1,14 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[30]:
-
 
 import numpy as np
 import copy
 
-
-# In[31]:
 
 
 # Draw a card with CARDVALUE, and then update the cards array and cardsCount array
@@ -30,19 +26,6 @@ def hit(cardValue, cards, cardsCount):
     return prob, cards, cardsCount
 
 
-# In[ ]:
-
-
-
-
-
-# In[32]:
-
-
-
-# In[33]:
-
-
 ## Put back a card with CARDVALUE to the CARDS array and CARDSCOUNT array
 def putBack(cardValue, cards, cardsCount):
     cardsIndex = (cardValue - 1) * 4 + cardsCount[cardValue - 1]
@@ -51,11 +34,6 @@ def putBack(cardValue, cards, cardsCount):
     return cards, cardsCount
 
 
-# In[34]:
-
-
-
-# In[35]:
 
 
 # Sum of all cards.
@@ -89,12 +67,6 @@ def valueSum(cardsHistory, dealer):
                 return playerSum1, playerSum11
         return playerSum1
     
-
-
-# In[36]:
-
-
-# In[37]:
 
 
 # Search all paths. If the dealer stands, update the expected value.
@@ -159,10 +131,6 @@ def step(dealerCardsHistory, cards, cardsCount, pathProb, endingProb):
     return endingProb
         
 
-
-# In[14]:
-
-
 # It calculates the expected total value of the dealer if she does not burst.
 def dealerExpectedValue(endingProb):
     value = 0
@@ -170,10 +138,6 @@ def dealerExpectedValue(endingProb):
     for x in range(0, 5):
         value += endingProb[x] / dealerNotBurstProb * (17 + x)
     return value
-
-
-# In[145]:
-
 
 # Calculate the probability of winning if the player hits.
 # The first portion is the probability of dealer not bursting 
@@ -254,10 +218,6 @@ def winProbIfHit(playerSum, cards, cardsCount, expectedValue, burstProb):
         
     return winProbHit
 
-
-# In[85]:
-
-
 # winProbIfHit() test case
 # step() test case.
 # dealerCard1 = 1
@@ -290,9 +250,6 @@ def winProbIfHit(playerSum, cards, cardsCount, expectedValue, burstProb):
 # print("player's winning probability if hitting is: ", winProbHit)
 
 
-# In[86]:
-
-
 def winProbIfStand(playerSum, endingProb):
     
     burstProb = endingProb[5]
@@ -322,17 +279,10 @@ def winProbIfStand(playerSum, endingProb):
     return winProbStand
 
 
-# In[18]:
-
-
 # winProbIfStand(playerSum, endingProb) test case.
 playerSum = 19
 endingProb = np.array([.2, .2, .2, .2, .1, .1])
 winProbIfStand(playerSum, endingProb)
-
-
-# In[138]:
-
 
 # This function takes in the player's cards history, the dealer's card on the table,
 # the card set the player sees prior drawing the table cards, 
@@ -410,11 +360,6 @@ def playerStrategy(dealerCard1, playerHistory, cards, cardsCount):
     return strategy, winProbHit, winProbStand
     
 
-
-
-# In[144]:
-
-
 # Randomly select a card from the card sets, but not actually draw it, just
 # output its value
 def randomValue(cards):
@@ -427,9 +372,6 @@ def randomValue(cards):
         #print("randomTemp", counter, ": ", randomTemp)
     value = int(np.ceil(randomTemp / 4))
     return value
-
-
-# In[148]:
 
 
 # Fixing dealerCard1, dealerCard2, playerCard1 and playerCard2, we played one game to see who
@@ -542,10 +484,6 @@ def oneGame(dealerCard1, dealerCard2, playerCard1, playerCard2, cards, cardsCoun
         gameResult = 0
 
     return playerBurstDummy, dealerBurstDummy, playerHistory, dealerHistory, gameResult, playerStrategyRecord, cards1, cardsCount1
-
-
-
-# In[149]:
 
 
 # oneGame() test case:
