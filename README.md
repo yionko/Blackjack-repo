@@ -18,3 +18,5 @@ This file takes in the common Blackjack strategy used by most players in the wor
 
 Note: Player actions of only hitting, standing and double are allowed.
 
+https://www.blackjackapprenticeship.com/blackjack-strategy-charts/
+
